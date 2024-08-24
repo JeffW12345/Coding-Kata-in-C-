@@ -1,5 +1,4 @@
 # CODING KATA
-===========
 
 ## Instructions
 
