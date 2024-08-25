@@ -8,24 +8,19 @@ int Add(string numbers)
     }
 
     string[] delimiters = new string[] { ",", "\n" };
-
     AdditionalDelimiterActions(ref numbers, ref delimiters);
 
     List<int> arrayOfNumbers = GetNumbersArray(numbers, delimiters);
-
     HandleNegativeNumbers(arrayOfNumbers);
 
-    return arrayOfNumbers.Where(x => x < 1001).Sum();
+    int sumOfNumbers = arrayOfNumbers.Where(number => number < 1001).Sum();
+    return sumOfNumbers;
 }
 
 void HandleNegativeNumbers(List<int> arrayOfNumbers)
 {
-    List<int> negativeNumbers = new List<int>();
+    List<int> negativeNumbers = arrayOfNumbers.Where(number => number < 0).ToList();  
 
-    foreach (int number in arrayOfNumbers)
-    {
-        if(number < 0) negativeNumbers.Add(number);
-    }
     if (negativeNumbers.Count > 0)
     {
         string message = "Negatives not allowed: ";
@@ -39,15 +34,13 @@ void HandleNegativeNumbers(List<int> arrayOfNumbers)
 
 List<int> GetNumbersArray(string numbers, string[] delimiters)
 {
-    List<string> extractedNumbers = new List<string>();
-
     List<string> arrayOfNumbersAsStrings = numbers.Split(delimiters, StringSplitOptions.None).OfType<string>().ToList();
-    List<int> arrayOfNumbers = new List<int>();
+    List<int> arrayOfNumbersAsIntegers = new List<int>();
     foreach (var numberAsString in arrayOfNumbersAsStrings)
     {
-        arrayOfNumbers.Add(Int32.Parse(numberAsString));
+        arrayOfNumbersAsIntegers.Add(Int32.Parse(numberAsString));
     }
-    return arrayOfNumbers;
+    return arrayOfNumbersAsIntegers;
 }
 
 void AdditionalDelimiterActions(ref string numbers, ref string[] delimiters)
