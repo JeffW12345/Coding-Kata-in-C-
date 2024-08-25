@@ -51,7 +51,8 @@ void AdditionalDelimiterActions(ref string numbers, ref string[] delimiters)
     {
         var test = regex.Match(numbers);
         delimiters = new string[] { ",", "\n", regex.Match(numbers).Groups[2].Value };
-        numbers = numbers.Replace(regex.Match(numbers).Groups[0].Value, "");
+        string delimiterInformation = regex.Match(numbers).Groups[0].Value;
+        numbers = numbers.Replace(delimiterInformation, "");
         return;
     }
 
@@ -60,7 +61,8 @@ void AdditionalDelimiterActions(ref string numbers, ref string[] delimiters)
     if (regex.IsMatch(numbers))
     {
         delimiters = new string[] { ",", "\n", regex.Match(numbers).Groups[2].Value };
-        numbers = numbers.Replace(regex.Match(numbers).Groups[0].Value, "");
+        string delimiterInformation = regex.Match(numbers).Groups[0].Value;
+        numbers = numbers.Replace(delimiterInformation, "");
     }
 }
 
