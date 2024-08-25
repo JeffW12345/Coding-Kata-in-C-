@@ -13,8 +13,8 @@ int Add(string numbers)
     List<int> arrayOfNumbers = GetNumbersArray(numbers, delimiters);
     HandleNegativeNumbers(arrayOfNumbers);
 
-    int sumOfNumbers = arrayOfNumbers.Where(number => number < 1001).Sum();
-    return sumOfNumbers;
+    int sumOfNumbersUnderOneThousand = arrayOfNumbers.Where(number => number < 1001).Sum();
+    return sumOfNumbersUnderOneThousand;
 }
 
 void HandleNegativeNumbers(List<int> arrayOfNumbers)
